@@ -1,0 +1,304 @@
+﻿<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Busoft - ×¤×™×ª×•×— ×•×™×™×¢×•×¥ ×˜×›× ×•×œ×•×’×™</title>
+
+  <!-- ×¦×‘×™×¢×ª ×œ×©×•× ×™×ª ×•×˜×¢×™× ×” × ×§×™×™×” -->
+  <meta name="theme-color" content="#0b1220" />
+  <style>html{background:#0b1220}</style>
+
+  <!-- Favicon / App Icon -->
+  <link rel="icon" type="image/png" href="/static/assets/×œ×•×’×•_×œ×‘×Ÿ.png" />
+  <link rel="apple-touch-icon" href="/static/assets/×œ×•×’×•_×œ×‘×Ÿ.png" />
+
+  <!-- Tailwind + Icons -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
+    body { font-family: 'Rubik', sans-serif; }
+    .nav-item::after { content:''; display:block; width:0; height:2px; background:#3b82f6; transition:width .3s; }
+    .nav-item:hover::after { width:100%; }
+
+    /* Loader logo animation */
+    @keyframes breathe {
+      0%,100% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(255,255,255,0)); }
+      50%     { transform: scale(1.06); filter: drop-shadow(0 0 18px rgba(255,255,255,.28)); }
+    }
+    .loader-logo { animation: breathe 1.4s ease-in-out infinite; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- LOADER -->
+  <div id="loader" class="fixed inset-0 bg-slate-900 flex items-center justify-center z-[9999] transition-opacity duration-300">
+    <div class="flex flex-col items-center select-none" aria-live="polite" aria-busy="true">
+      <img src="/static/assets/×œ×•×’×•_×œ×‘×Ÿ.png" alt="Busoft" class="h-28 md:h-36 w-auto loader-logo" />
+      <div class="mt-4 text-white/80 font-medium">×˜×•×¢×Ÿâ€¦</div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="bg-blue-600 text-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <img src="/static/assets/×œ×•×’×•_×œ×‘×Ÿ.png" alt="Busoft Logo" class="h-12">
+        <span class="text-xl font-bold">Busoft</span>
+      </div>
+      <div class="hidden md:flex gap-8">
+        <a href="#about" class="nav-item px-2 py-4">××•×“×•×ª</a>
+        <a href="#development" class="nav-item px-2 py-4">×¤×™×ª×•×—</a>
+        <a href="#guidance" class="nav-item px-2 py-4">×”×“×¨×›×”</a>
+        <a href="#consulting" class="nav-item px-2 py-4">×œ×™×•×•×™ ×•×™×™×¢×•×¥</a>
+        <a href="#contact" class="nav-item px-2 py-4">×¦×•×¨ ×§×©×¨</a>
+      </div>
+      <button class="md:hidden focus:outline-none" aria-label="×¤×ª×— ×ª×¤×¨×™×˜"><i data-feather="menu"></i></button>
+    </div>
+  </nav>
+
+  <!-- HERO: ×¨×§×¢ ×ž×”×ª×ž×•× ×” ×©×œ×š + ×”×œ×•×’×• ×ž×¢×œ (×›×ž×• ×©×”×™×”) -->
+  <header class="relative overflow-hidden text-white py-20"
+          style="background-image:url('/static/assets/hero.jpg?v=2'); background-size:cover; background-position:center;">
+    <div class="absolute inset-0 bg-gradient-to-r from-blue-500/60 to-blue-700/60"></div>
+
+    <!-- ×”×œ×•×’×• ×ž×¢×œ ×”×¨×§×¢, ×¢× ×¤×¨×œ×§×¡×” ×¢×“×™× ×” -->
+    <div id="hero-parallax" class="pointer-events-none absolute inset-0 flex items-center justify-center z-0">
+      <img
+        src="/static/assets/×œ×•×’×•_×œ×‘×Ÿ.png"
+        alt="Busoft Mark"
+        class="select-none opacity-25 drop-shadow-2xl h-56 md:h-72 will-change-transform transition-transform duration-200 ease-out"
+        style="transform: translate3d(0,0,0) rotateZ(0deg);" />
+    </div>
+
+    <div class="container mx-auto px-4 text-center relative z-10">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">×¤×™×ª×•×— ×•×™×™×¢×•×¥ ×˜×›× ×•×œ×•×’×™ ×ž×ª×§×“×</h1>
+      <p class="text-xl md:text-2xl mb-8">×ž×ª×ž×—×™× ×‘×‘× ×™×™×ª ×¤×ª×¨×•× ×•×ª SaaS, ×”×“×¨×›×” ×•×œ×™×•×•×™ ×˜×›× ×•×œ×•×’×™ ×œ×¢×¡×§×™×</p>
+      <a href="#contact" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition duration-300">×¦×•×¨ ×§×©×¨</a>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">××•×“×•×ª×™× ×•</h2>
+      <div class="flex flex-col md:flex-row items-center gap-8">
+        <div class="md:w-1/2">
+          <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=1400&q=60" alt="About Busoft" class="rounded-lg shadow-xl w-full">
+        </div>
+        <div class="md:w-1/2">
+          <h3 class="text-2xl font-semibold mb-4">×ž×™ ×× ×—× ×•?</h3>
+          <p class="text-lg mb-6">Busoft ×”×™× ×—×‘×¨×” ×”×ž×ª×ž×—×” ×‘×¤×™×ª×•×— ×ª×•×›× ×” ×•×™×™×¢×•×¥ ×˜×›× ×•×œ×•×’×™ ×œ×¢×¡×§×™×. ×× ×• ×ž×¦×™×¢×™× ×ž×’×•×•×Ÿ ×©×™×¨×•×ª×™× ×”×—×œ ×ž×¤×™×ª×•×— ××¤×œ×™×§×¦×™×•×ª ×•×•×‘ ×•×ž×•×‘×™×™×œ, ×“×¨×š ×”×“×¨×›×•×ª ×˜×›× ×•×œ×•×’×™×•×ª ×•×¢×“ ×œ×™×•×•×™ ××™×©×™ ×œ×¦×ž×™×—×” ×“×™×’×™×˜×œ×™×ª.</p>
+          <p class="text-lg">×”×ž×©×™×ž×” ×©×œ× ×• ×”×™× ×œ×”×¤×•×š ×˜×›× ×•×œ×•×’×™×” ×ž×•×¨×›×‘×ª ×œ×¤×©×•×˜×” ×•× ×’×™×©×” ×œ×›×œ ×¢×¡×§, ×œ×œ× ×§×©×¨ ×œ×’×•×“×œ×• ××• ×œ×ª×—×•× ×¢×™×¡×•×§×•.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEVELOPMENT -->
+  <section id="development" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">×©×™×¨×•×ª×™ ×¤×™×ª×•×—</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+          <div class="text-blue-500 mb-4"><i data-feather="code" class="w-10 h-10"></i></div>
+          <h3 class="text-xl font-semibold mb-3">×¤×™×ª×•×— ××¤×œ×™×§×¦×™×•×ª ×•×•×‘</h3>
+          <p class="text-gray-600">×‘× ×™×™×ª ×¤×œ×˜×¤×•×¨×ž×•×ª ×ž×‘×•×¡×¡×•×ª ×¢× ×Ÿ ×¢× ×˜×›× ×•×œ×•×’×™×•×ª ×ž×ª×§×“×ž×•×ª ×›×ž×• React, Node.js ×•×¢×•×“.</p>
+          <img src="/static/assets/card1.webp" alt="×¤×™×ª×•×— ×•×•×‘" class="w-full h-40 object-cover rounded mt-4">
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+          <div class="text-blue-500 mb-4"><i data-feather="smartphone" class="w-10 h-10"></i></div>
+          <h3 class="text-xl font-semibold mb-3">××¤×œ×™×§×¦×™×•×ª ×ž×•×‘×™×™×œ</h3>
+          <p class="text-gray-600">×¤×™×ª×•×— ××¤×œ×™×§×¦×™×•×ª Native ×•-Hybrid ×œ-Android ×•-iOS ×¢× ×—×•×•×™×™×ª ×ž×©×ª×ž×© ×ž×¢×•×œ×”.</p>
+          <img src="/static/assets/card2.jpg" alt="×¤×™×ª×•×— ×ž×•×‘×™×™×œ" class="w-full h-40 object-cover rounded mt-4">
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+          <div class="text-blue-500 mb-4"><i data-feather="database" class="w-10 h-10"></i></div>
+          <h3 class="text-xl font-semibold mb-3">××¨×›×™×˜×§×˜×•×¨×” ×•×ž×™×§×¨×•-×©×™×¨×•×ª×™×</h3>
+          <p class="text-gray-600">×ª×›× ×•×Ÿ ×ž×¢×¨×›×•×ª ×ž×•×¨×›×‘×•×ª ×¢× ××¨×›×™×˜×§×˜×•×¨×” ×’×ž×™×©×” ×•× ×™×ª× ×ª ×œ×”×¨×—×‘×”.</p>
+          <img src="/static/assets/card3.png" alt="Microservices" class="w-full h-40 object-cover rounded mt-4">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUIDANCE -->
+  <section id="guidance" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">×”×“×¨×›×” ×˜×›× ×•×œ×•×’×™×ª</h2>
+      <div class="flex flex-col md:flex-row-reverse items-center gap-8">
+        <div class="md:w-1/2">
+          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=60" alt="SaaS Guidance" class="rounded-lg shadow-xl w-full">
+        </div>
+        <div class="md:w-1/2">
+          <h3 class="text-2xl font-semibold mb-4">×”×“×¨×›×ª SaaS ×•×¤×™×ª×•×— ××ª×¨×™×</h3>
+          <p class="text-lg mb-6">×× ×• ×ž×¦×™×¢×™× ×”×“×¨×›×•×ª ×ž×ž×•×§×“×•×ª ×œ×‘× ×™×™×ª ××ª×¨×™× ×•××¤×œ×™×§×¦×™×•×ª SaaS, ×ž×¨×¢×™×•×Ÿ ×•×¢×“ ×ž×•×¦×¨.</p>
+          <ul class="space-y-3 mb-6">
+            <li class="flex items-start"><i data-feather="check" class="text-green-500 mr-2 mt-1"></i><span>×‘×—×™×¨×ª ×˜×›× ×•×œ×•×’×™×•×ª ×ž×ª××™×ž×•×ª</span></li>
+            <li class="flex items-start"><i data-feather="check" class="text-green-500 mr-2 mt-1"></i><span>××¡×˜×¨×˜×’×™×•×ª ×œ×¤×™×ª×•×— ×•×¤×¨×™×¡×” ×ž×”×™×¨×™×</span></li>
+            <li class="flex items-start"><i data-feather="check" class="text-green-500 mr-2 mt-1"></i><span>×˜×™×¤×™× ×œ××•×¤×˜×™×ž×™×–×¦×™×” ×•×—×•×•×™×™×ª ×ž×©×ª×ž×©</span></li>
+          </ul>
+          <a href="#contact" class="inline-block bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition duration-300">×œ×¤×¨×˜×™× × ×•×¡×¤×™×</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONSULTING -->
+  <section id="consulting" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">×œ×™×•×•×™ ×•×™×™×¢×•×¥</h2>
+      <div class="flex flex-col md:flex-row items-center gap-8">
+        <div class="md:w-1/2">
+          <img src="https://images.unsplash.com/photo-1552581234-26160f608093?auto=format&fit=crop&w=1400&q=60" alt="Consulting Team" class="rounded-lg shadow-xl w-full">
+        </div>
+        <div class="md:w-1/2">
+          <h3 class="text-2xl font-semibold mb-4">×¦×•×•×ª ×”×ž×•×ž×—×™× ×©×œ× ×•</h3>
+          <p class="text-lg mb-6">×‘-Busoft ×× ×—× ×• ×’××™× ×‘×¦×•×•×ª ×”×¨×‘-×ª×—×•×ž×™ ×©×œ× ×• ×”×›×•×œ×œ:</p>
+          <div class="grid grid-cols-2 gap-4 mb-6">
+            <div class="bg-white p-4 rounded shadow"><i data-feather="code" class="text-blue-500 mb-2"></i><h4 class="font-semibold">×ž×¤×ª×—×™×</h4><p class="text-sm text-gray-600">×ž×•×ž×—×™× ×‘×˜×›× ×•×œ×•×’×™×•×ª ×¢×“×›× ×™×•×ª</p></div>
+            <div class="bg-white p-4 rounded shadow"><i data-feather="check-circle" class="text-blue-500 mb-2"></i><h4 class="font-semibold">×‘×•×“×§×™ ×ª×•×›× ×”</h4><p class="text-sm text-gray-600">×”×‘×˜×—×ª ××™×›×•×ª ×œ×œ× ×¤×©×¨×•×ª</p></div>
+            <div class="bg-white p-4 rounded shadow"><i data-feather="trending-up" class="text-blue-500 mb-2"></i><h4 class="font-semibold">×™×•×¢×¦×™× ×¢×¡×§×™×™×</h4><p class="text-sm text-gray-600">×”×¤×™×›×ª ×˜×›× ×•×œ×•×’×™×” ×œ×™×ª×¨×•×Ÿ ×ª×—×¨×•×ª×™</p></div>
+            <div class="bg-white p-4 rounded shadow"><i data-feather="users" class="text-blue-500 mb-2"></i><h4 class="font-semibold">×ž××ž× ×™×</h4><p class="text-sm text-gray-600">×”×¢×‘×¨×ª ×™×“×¢ ×¤×¨×§×˜×™</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-16 bg-blue-600 text-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">×¦×•×¨ ×§×©×¨</h2>
+      <div class="max-w-4xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-2xl font-semibold mb-4">×¤×¨×˜×™ ×™×¦×™×¨×ª ×§×©×¨</h3>
+            <div class="space-y-4">
+              <div class="flex items-start"><i data-feather="user" class="mr-3 mt-1"></i><div><h4 class="font-semibold">××•×¨×™ ×‘×•×—×‘×•×˜</h4><p>×ž× ×›"×œ Busoft</p></div></div>
+              <div class="flex items-start"><i data-feather="phone" class="mr-3 mt-1"></i><div><h4 class="font-semibold">×˜×œ×¤×•×Ÿ</h4><p>+972525050810</p></div></div>
+              <div class="flex items-start"><i data-feather="mail" class="mr-3 mt-1"></i><div><h4 class="font-semibold">××™×ž×™×™×œ</h4><p>uri@busoft.co.il</p></div></div>
+            </div>
+          </div>
+          <div class="bg-white rounded-lg p-6 text-gray-800">
+            <h3 class="text-2xl font-semibold mb-4">×©×œ×—×• ×œ× ×• ×”×•×“×¢×”</h3>
+            <form id="contact-form" class="space-y-4">
+              <div>
+                <label for="contact-name" class="block mb-1">×©×</label>
+                <input type="text" id="contact-name" required class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+              </div>
+              <div>
+                <label for="contact-email" class="block mb-1">××™×ž×™×™×œ</label>
+                <input type="email" id="contact-email" required class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+              </div>
+              <div>
+                <label for="contact-message" class="block mb-1">×”×•×“×¢×”</label>
+                <textarea id="contact-message" rows="3" required class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+              </div>
+              <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition duration-300">×©×œ×—</button>
+              <p id="contact-status" class="text-sm mt-2"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="flex items-center mb-4 md:mb-0">
+          <img src="/static/assets/×œ×•×’×•_×œ×‘×Ÿ.png" alt="Busoft Logo" class="h-10 mr-3">
+          <span class="text-xl font-bold">Busoft</span>
+        </div>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-blue-400 transition duration-300" aria-label="Facebook"><i data-feather="facebook"></i></a>
+          <a href="#" class="hover:text-blue-400 transition duration-300" aria-label="LinkedIn"><i data-feather="linkedin"></i></a>
+          <a href="#" class="hover:text-blue-400 transition duration-300" aria-label="Twitter"><i data-feather="twitter"></i></a>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-6 pt-6 text-center md:text-left">
+        <p class="text-gray-400">Â© 2023 Busoft. ×›×œ ×”×–×›×•×™×•×ª ×©×ž×•×¨×•×ª.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    feather.replace();
+
+    // Loader
+    const loader = document.getElementById('loader');
+    function showLoader(){ loader.classList.remove('opacity-0','pointer-events-none'); loader.setAttribute('aria-busy','true'); }
+    function hideLoader(){ loader.classList.add('opacity-0','pointer-events-none'); loader.setAttribute('aria-busy','false'); }
+    window.addEventListener('load', () => { setTimeout(hideLoader, 300); });
+
+    // ×¢×•×’× ×™× ×—×œ×§×™× + loader ×§×¦×¨
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        e.preventDefault();
+        const t = document.querySelector(a.getAttribute('href'));
+        if(!t) return;
+        showLoader(); t.scrollIntoView({behavior:'smooth'});
+        const ob = new IntersectionObserver((en,ob2)=>{ if(en[0].isIntersecting){ setTimeout(()=>{hideLoader();ob2.disconnect();},150);}},{threshold:0.6});
+        ob.observe(t); setTimeout(hideLoader,1200);
+      });
+    });
+
+    // ×¤×¨×œ×§×¡×” ×¢×“×™× ×” ×œ×œ×•×’×• ×‘-Hero
+    (function initHeroParallax(){
+      const header = document.querySelector('header');
+      const logo = document.querySelector('#hero-parallax img');
+      if (!header || !logo) return;
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const coarse = window.matchMedia('(pointer: coarse)').matches;
+      if (reduce || coarse) return;
+
+      let targetX=0,targetY=0,currentX=0,currentY=0,raf;
+      const maxX=28,maxY=18;
+      function onMove(e){
+        const r=header.getBoundingClientRect();
+        const x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
+        targetX=(x-0.5)*maxX; targetY=(y-0.5)*maxY;
+        if(!raf) raf=requestAnimationFrame(tick);
+      }
+      function tick(){
+        currentX+=(targetX-currentX)*0.12; currentY+=(targetY-currentY)*0.12;
+        logo.style.transform=`translate3d(${currentX}px,${currentY}px,0) rotateZ(${currentX*0.2}deg)`;
+        if(Math.abs(currentX-targetX)>0.2||Math.abs(currentY-targetY)>0.2){ raf=requestAnimationFrame(tick); } else { raf=null; }
+      }
+      function reset(){ targetX=targetY=0; if(!raf) raf=requestAnimationFrame(tick); }
+
+      header.addEventListener('mousemove', onMove);
+      header.addEventListener('mouseleave', reset);
+    })();
+
+    // ×˜×•×¤×¡ ×™×¦×™×¨×ª ×§×©×¨ â†’ /api/contact
+    (function bindContactForm(){
+      const form=document.getElementById('contact-form');
+      const statusEl=document.getElementById('contact-status');
+      if(!form||!statusEl) return;
+
+      form.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        const name=document.getElementById('contact-name')?.value?.trim();
+        const email=document.getElementById('contact-email')?.value?.trim();
+        const message=document.getElementById('contact-message')?.value?.trim();
+
+        statusEl.textContent='×©×•×œ×—...';
+        try{
+          const res=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,email,message})});
+          const data=await res.json();
+          if(res.ok && data.ok){ statusEl.textContent='×”×•×“×¢×” × ×©×œ×—×” âœ…'; form.reset(); }
+          else { statusEl.textContent='×©×’×™××” ×‘×©×œ×™×—×”.'; }
+        }catch{ statusEl.textContent='×©×’×™××ª ×¨×©×ª.'; }
+      });
+    })();
+  </script>
+</body>
+</html>
+
+
+

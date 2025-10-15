@@ -9,3 +9,7 @@ __pycache__/
 
 # misc
 *.log
+# secrets
+.env
+.env.*
+*.env

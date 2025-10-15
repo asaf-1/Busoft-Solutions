@@ -1,0 +1,5 @@
+﻿/* PASTE INTO YOUR CSS (hero background) */
+.hero {
+  background-image: url('/static/assets/hero.jpg');
+  /* שאר הסטיילים שלך... */
+}
