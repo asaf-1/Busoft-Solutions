@@ -20,4 +20,5 @@ USER runner
 EXPOSE 8000
 
 # מריצים את uvicorn דרך gunicorn (ASGI)
-CMD ["gunicorn","-w","4","-k","uvicorn.workers.UvicornWorker","-b","0.0.0.0:8000","--timeout","120","wsgi:app"]
+CMD ["gunicorn","-k","uvicorn.workers.UvicornWorker","-w","1","--threads","4","--timeout","120","-b","0.0.0.0:8000","wsgi:app","--log-level","info","--capture-output"]
+
