@@ -1,9 +1,10 @@
-﻿# wsgi.py  — גרסה יציבה מלאה
-import importlib
-from typing import Optional, Any
-import os
+﻿# wsgi.py — גרסה יציבה בלי Jinja2
 
-# --- 1) נסה לאתר אפליקציה קיימת (FastAPI/Starlette/Flask) ---
+import importlib
+import os
+from typing import Optional, Any
+
+# נסה לאתר אפליקציה קיימת (FastAPI/Starlette/Flask)
 existing_app: Optional[Any] = None
 for name in ("app.main", "app", "main"):
     try:
@@ -24,47 +25,42 @@ try:
 except Exception:
     pass
 
-# --- 2) API של צור קשר ---
-try:
-    from app.api_contact import app as contact_api  # FastAPI
-except Exception as e:  # לא לחסום עלייה אם משהו חסר
-    from fastapi import FastAPI
-    contact_api = FastAPI(title="contact-api-stub")
-    @contact_api.get("/contact")
-    async def _stub():
-        return {"ok": False, "error": "api_contact not loaded", "detail": str(e)}
-
-# --- 3) אפליקציה מאחדת (FastAPI) עם /healthz + מיפויים ---
-from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse
+# --- אפליקציית האיחוד (FastAPI) ---
+from fastapi import FastAPI
+from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
-from starlette.templating import Jinja2Templates
 
 app = FastAPI(title="Busoft")
 
-# סטטי — גם /static וגם /assets (כדי לכסות כל נתיב ב-HTML)
+# סטטי – גם /static וגם /assets
 if os.path.isdir("app/static"):
     app.mount("/static", StaticFiles(directory="app/static"), name="static")
 if os.path.isdir("app/static/assets"):
     app.mount("/assets", StaticFiles(directory="app/static/assets"), name="assets")
 
-# בריאות
+# בריאות ל-Render
 @app.get("/healthz")
 async def healthz():
     return {"ok": True}
 
-# ה-API
-app.mount("/api", contact_api)           # /api/contact
+# API של צור קשר
+try:
+    from app.api_contact import app as contact_api
+    app.mount("/api", contact_api)  # /api/contact
+except Exception as e:
+    @app.get("/api/contact")
+    async def _api_error():
+        return {"ok": False, "error": f"contact api not loaded: {e}"}
 
-# אתר קיים או fallback ל-index.html אם קיים
+# אתר קיים? נמפה לשורש. אחרת – נחזיר index.html כקובץ
 if existing_app is not None:
-    app.mount("/", existing_app)         # האתר שלך כמו שהוא
+    app.mount("/", existing_app)
 else:
-    templates_dir = "app/templates"
-    templates = Jinja2Templates(directory=templates_dir) if os.path.isdir(templates_dir) else None
+    INDEX = os.path.join("app", "templates", "index.html")
 
     @app.get("/", response_class=HTMLResponse)
-    async def index(request: Request):
-        if templates and os.path.isfile(os.path.join(templates_dir, "index.html")):
-            return templates.TemplateResponse("index.html", {"request": request})
+    async def index():
+        if os.path.isfile(INDEX):
+            # שולח את ה-HTML כקובץ (אין צורך ב-Jinja2)
+            return FileResponse(INDEX, media_type="text/html; charset=utf-8")
         return HTMLResponse("<h1>Busoft</h1><p>OK</p>")
