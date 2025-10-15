@@ -43,3 +43,8 @@ else:
     routes.append(Mount("/", app=root))
 
 app = Starlette(routes=routes)
+
+# בסוף הקובץ app/api_contact.py (או קרוב להגדרות ה-FastAPI)
+@app.get("/healthz")
+def healthz():
+    return {"ok": True}
