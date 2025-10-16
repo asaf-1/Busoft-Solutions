@@ -14,19 +14,38 @@ app = FastAPI(title="Contact API")
 
 def send_email_sync(subject: str, body: str, mail_to: str,
                     mail_from: str, smtp_host: str, smtp_port: int,
-                    smtp_user: str|None, smtp_password: str|None, use_tls: bool=True):
+                    smtp_user: str | None, smtp_password: str | None,
+                    use_tls: bool = True):
+    import os, smtplib
+    from email.message import EmailMessage
+
     msg = EmailMessage()
     msg["Subject"] = subject
-    msg["From"] = mail_from
-    msg["To"] = mail_to
-    msg.set_content(body)
+    msg["From"] = mail_from               # חייב להיות ה-Single Sender המאומת
+    msg["To"] = mail_to                   # המקבל (uri@busoft.co.il)
+    msg["Reply-To"] = mail_to             # אפשר לשים כאן גם את כתובת השולח מהטופס
+    msg.set_content(body, charset="utf-8")
 
-    with smtplib.SMTP(smtp_host, smtp_port, timeout=20) as s:
-        if use_tls:
-            s.starttls()
-        if smtp_user and smtp_password:
-            s.login(smtp_user, smtp_password)
-        s.send_message(msg)
+    use_ssl = os.getenv("SMTP_SSL", "0") == "1"
+
+    if use_ssl:
+        # SSL מלא (פורט 465)
+        with smtplib.SMTP_SSL(smtp_host, smtp_port, timeout=20) as s:
+            s.ehlo()
+            if smtp_user and smtp_password:
+                s.login(smtp_user, smtp_password)
+            s.send_message(msg)
+    else:
+        # STARTTLS (פורט 587)
+        with smtplib.SMTP(smtp_host, smtp_port, timeout=20) as s:
+            s.ehlo()
+            if use_tls:
+                s.starttls()
+                s.ehlo()
+            if smtp_user and smtp_password:
+                s.login(smtp_user, smtp_password)
+            s.send_message(msg)
+
 
 @app.post("/contact")
 async def contact(payload: ContactIn):
