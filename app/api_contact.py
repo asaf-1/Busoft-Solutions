@@ -68,7 +68,7 @@ async def contact(payload: ContactIn):
     SMTP_HOST = os.getenv("SMTP_HOST", "smtp.sendgrid.net")
     SMTP_PORT = int(os.getenv("SMTP_PORT", "587"))
     SMTP_USER = os.getenv("SMTP_USER", "apikey")
-    SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")              # ה-API Key
+    SMTP_PASSWORD = os.getenv("SG.qi-0ryvFQzKJbUdDLr3P8w.BuGfhizSruWwWNt3FidaazMEEDk_cVy9Q37Bi2")              # ה-API Key
     SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY") or SMTP_PASSWORD  # מאפשר להשתמש באותו ערך
     DRY_RUN = os.getenv("DRY_RUN", "0")
 
